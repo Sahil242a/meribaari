@@ -1,0 +1,21 @@
+{
+  "name": "meribaari",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MeriBaari: virtual queue tokens for clinics and government offices",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n api,web -c green,yellow \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server test",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix client run build && cross-env NODE_ENV=production npm --prefix server start",
+    "lint": "npm --prefix client run lint && npx --prefix client oxlint server/src server/scripts server/tests",
+    "format": "prettier --write \"server/{src,scripts,tests}/**/*.js\" \"client/src/**/*.{js,jsx,css}\" \"*.{md,yml}\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "cross-env": "^10.1.0",
+    "prettier": "^3.10.1"
+  }
+}
